@@ -1,4 +1,4 @@
-        lettcode刷题
+        lettcode算法题
         
     
 * 前言
