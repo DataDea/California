@@ -17,6 +17,9 @@
 
 * 目录
 ```
+    simple 简单题
+    medium 中等难度的题
+    superior 高难度的题
 
 ```
 

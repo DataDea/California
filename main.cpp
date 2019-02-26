@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-extern void initArray();
+extern void initSimple();
 int main() {
-    initArray();
+    initSimple();
     return 0;
 }

@@ -5,8 +5,8 @@
 
 using namespace std;
 
-int initArray() {
-    cout<<"init array"<<endl;
+int initSimple() {
+    cout<<"init simple"<<endl;
     return 0;
 }
 
