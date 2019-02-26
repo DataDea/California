@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
+extern void initArray();
 int main() {
-    cout << "Hello, World!" << endl;
+    initArray();
     return 0;
 }
