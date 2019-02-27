@@ -29,11 +29,14 @@ ListNode *solution(ListNode *l1, ListNode *l2) {
     auto *head = (struct ListNode *) malloc(sizeof(ListNode));
     int sum = p->val + q->val;
     head->val = sum % 10;
+    head->next = NULL;
     temp = head->val / 10;
     tmp = head;
+    p = p->next;
+    q = q->next;
     while (p != NULL || q != NULL) {
-        int l = (p) ? 0 : p->val;
-        int r = (q) ? 0 : q->val;
+        int l = (p == NULL) ? 0 : p->val;
+        int r = (q == NULL) ? 0 : q->val;
         auto *cur = (struct ListNode *) malloc(sizeof(ListNode));
         cur->next = NULL;
         cur->val = (l + r + temp) % 10;
@@ -45,8 +48,8 @@ ListNode *solution(ListNode *l1, ListNode *l2) {
     }
     if (temp != 0) {
         auto *cur = (struct ListNode *) malloc(sizeof(ListNode));
-        cur->next = NULL;
         cur->val = temp;
+        cur->next = NULL;
         tmp->next = cur;
     }
     return head;
