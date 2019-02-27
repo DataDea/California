@@ -33,7 +33,7 @@ ListNode *solution(ListNode *l1, ListNode *l2) {
     tmp = head;
     while (p != NULL || q != NULL) {
         int l = (p) ? 0 : p->val;
-        int r = (p) ? 0 : p->val;
+        int r = (q) ? 0 : q->val;
         auto *cur = (struct ListNode *) malloc(sizeof(ListNode));
         cur->next = NULL;
         cur->val = (l + r + temp) % 10;
