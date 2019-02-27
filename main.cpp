@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-extern void initSimple();
+extern void test();
 int main() {
-    initSimple();
+    test();
     return 0;
 }
