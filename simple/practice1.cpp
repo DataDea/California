@@ -33,40 +33,40 @@ vector<int> solution1(vector<int> &array, int target) {
     return result;
 }
 
-/**
- * 方法二
- */
-vector<int> solution2(vector<int> &array, int target) {
-    map<int, int> keys;
-    vector<int> index;
-    for (int i = 0; i < array.size(); i++) {
-        keys.insert(array[i], i);
-    }
-    for (int j = 0; j < array.size(); j++) {
-        int temp = array[j];
-        if (keys.count(target - temp) > 0) {
-            index.push_back(j);
-            index.push_back(keys[target - temp]);
-        }
-    }
-    return index;
-}
-
-/**
- * 方法三
- */
-vector<int> solution3(vector<int> &array, int target) {
-    map<int, int> keys;
-    vector<int> index;
-    for (int i = 0; i < array.size(); i++) {
-        keys.insert(array[i], i);
-        int temp = target - array[i];
-        if (keys.count(temp) > 0) {
-            index.push_back(i);
-            index.push_back(keys[temp]);
-            return index;
-        }
-
-    }
-    return index;
-}
+///**
+// * 方法二
+// */
+//vector<int> solution2(vector<int> &array, int target) {
+//    map<int, int> keys;
+//    vector<int> index;
+//    for (int i = 0; i < array.size(); i++) {
+//        keys.insert(array[i], i);
+//    }
+//    for (int j = 0; j < array.size(); j++) {
+//        int temp = array[j];
+//        if (keys.count(target - temp) > 0) {
+//            index.push_back(j);
+//            index.push_back(keys[target - temp]);
+//        }
+//    }
+//    return index;
+//}
+//
+///**
+// * 方法三
+// */
+//vector<int> solution3(vector<int> &array, int target) {
+//    map<int, int> keys;
+//    vector<int> index;
+//    for (int i = 0; i < array.size(); i++) {
+//        keys.insert(array[i], i);
+//        int temp = target - array[i];
+//        if (keys.count(temp) > 0) {
+//            index.push_back(i);
+//            index.push_back(keys[temp]);
+//            return index;
+//        }
+//
+//    }
+//    return index;
+//}
