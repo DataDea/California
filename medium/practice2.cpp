@@ -22,21 +22,29 @@
  */
 #include <iostream>
 #include <string.h>
+#include <cstring>
+#include <sstream>
+
 using namespace std;
 
-int findMaxLength(string s) {
+int findMaxLength(string s) {  //abcabcdea
     int max = 0;
     for (int i = 0; i < s.size(); i++) {
-        //c的字符串拼接有问题
-        string temp = s[i] + "";
-        int length = 0;
+        char p = s[i];
+        string temp;
+        stringstream stream;
+        stream << p;
+        temp = stream.str();
+        begin:
         for (int j = i + 1; j < s.size(); j++) {
             char tmp = s[j];
+            int length = 0;
             for (int k = 0; k < temp.size(); k++) {
-                if (temp[k] == tmp) {
+                char element = temp[k];
+                if (element == tmp) {
                     if (length > max) {
                         max = length;
-                        break;
+                        goto begin;
                     }
                 } else {
                     length++;
