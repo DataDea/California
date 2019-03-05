@@ -32,24 +32,31 @@ int findMaxLength(string s) {  //abcabcdea
     for (int i = 0; i < s.size(); i++) {
         char p = s[i];
         string temp;
+        string tempNew;
         stringstream stream;
         stream << p;
         temp = stream.str();
-        lens:
+        int length = 1;
+        bool flag = false;
         for (int j = i + 1; j < s.size(); j++) {
             char tmp = s[j];
-            int length = 0;
-            for (int k = 0; k <= temp.size() - 1; k++) {
+            for (int k = 0; k <= temp.size(); k++) {
                 char element = temp[k];
                 if (element == tmp) {
-                    if (length > max) {
+                    if (length >= max) {
                         max = length;
-                        goto lens;
                     }
+                    flag = true;
+                    goto out;
                 } else {
                     length++;
-                    temp = temp + tmp;
+                    tempNew = temp + tmp;
                 }
+            }
+            temp = tempNew;
+            out:
+            if (flag) {
+                break;
             }
         }
     }
