@@ -7,7 +7,7 @@ extern void test();
 extern int findMaxLength(string s);
 
 int main() {
-    int max = findMaxLength("abcabcdea");
+    int max = findMaxLength("abc abc");
     cout << max << endl;
     return 0;
 }

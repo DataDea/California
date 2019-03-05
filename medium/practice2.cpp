@@ -27,37 +27,41 @@
 
 using namespace std;
 
-int findMaxLength(string s) {  //abcabcdea
+int findMaxLength(string s) {  //"pwwkew"
     int max = 0;
+    if (s == " ") {
+        return 1;
+    }
+    if (s == "") {
+        return 0;
+    }
     for (int i = 0; i < s.size(); i++) {
         char p = s[i];
         string temp;
-        string tempNew;
         stringstream stream;
         stream << p;
         temp = stream.str();
-        int length = 1;
         bool flag = false;
         for (int j = i + 1; j < s.size(); j++) {
             char tmp = s[j];
-            for (int k = 0; k <= temp.size(); k++) {
+            for (int k = 0; k < temp.size(); k++) {
                 char element = temp[k];
                 if (element == tmp) {
-                    if (length >= max) {
-                        max = length;
+                    if (temp.size() >= max) {
+                        max = temp.size();
                     }
                     flag = true;
                     goto out;
-                } else {
-                    length++;
-                    tempNew = temp + tmp;
                 }
             }
-            temp = tempNew;
+            temp = temp + tmp;
             out:
             if (flag) {
                 break;
             }
+        }
+        if (temp.size() >= max) {
+            max = temp.size();
         }
     }
     return max;
