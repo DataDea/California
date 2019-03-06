@@ -6,8 +6,10 @@ extern void test();
 
 extern int findMaxLength(string s);
 
+extern string findSameString(string text);
+
 int main() {
-    int max = findMaxLength("abc abc");
-    cout << max << endl;
+    string result = findSameString("");
+    cout << result << endl;
     return 0;
 }
