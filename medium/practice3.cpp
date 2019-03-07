@@ -106,7 +106,7 @@ string officeLongestPalindrome(string text) {
             end = i + len / 2;
         }
     }
-    int count = end - start;
+    int count = end - start + 1;
     result = text.substr(start, count);
     return result;
 }
