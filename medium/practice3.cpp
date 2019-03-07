@@ -21,7 +21,7 @@
 using namespace std;
 
 /**
- * 自己的解决方案
+ * 自己的解决方案 时间复杂度和空间复杂度过高
  */
 bool isBackText(string text) {
     int len = static_cast<int>(text.size());
@@ -100,6 +100,7 @@ string officeLongestPalindrome(string text) {
     for (int i = 0; i < text.size(); i++) {
         int len1 = expandAroundCenter(text, i, i);
         int len2 = expandAroundCenter(text, i, i + 1);
+        //计算中心  回文数两边是对称的
         int len = max(&len1, &len2);
         if (len > end - start) {
             start = i - (len - 1) / 2;
