@@ -8,6 +8,7 @@ extern int findMaxLength(string s);
 
 extern string findBackString(string text);
 extern string officeLongestPalindrome(string text);
+extern void convert(string text);
 
 int main() {
     // 基于当前系统的当前日期/时间
