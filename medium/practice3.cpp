@@ -21,15 +21,51 @@
 using namespace std;
 
 bool isBackText(string text) {
-
-    return false;
-}
-
-string findSameString(string text) {
-    for (int i = 0; i < text.size(); i++) {
-        for (int j = i + 1; j < text.size(); j++) {
-
+    int len = static_cast<int>(text.size());
+    int mid = len / 2;
+    int left = mid - 1;
+    int right = mid + 1;
+    if (len % 2 == 0) {
+        right = mid;
+    }
+    while (left >= 0 && right <= len - 1) {
+        char l = text[left];
+        char r = text[right];
+        if (l == r) {
+            left--;
+            right++;
+        } else {
+            return false;
         }
     }
-    return "";
+
+    return true;
+}
+
+string findBackString(string text) {
+    int max = 0;
+    string target;
+    for (int i = 0; i < text.size(); i++) {
+        char p = text[i];
+        string temp;
+        stringstream stream;
+        stream << p;
+        temp = stream.str();
+        if (temp.size() > max) {
+            max = static_cast<int>(temp.size());
+            target = temp;
+        }
+        for (int j = i + 1; j < text.size(); j++) {
+            char tmp = text[j];
+            temp = temp + tmp;
+            bool flag = isBackText(temp);
+            if (flag) {
+                if (temp.size() > max) {
+                    max = static_cast<int>(temp.size());
+                    target = temp;
+                }
+            }
+        }
+    }
+    return target;
 }
