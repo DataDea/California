@@ -35,9 +35,13 @@
 #include <string.h>
 #include <cstring>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
+/**
+ * 自己的方案有点问题
+ */
 
 string convert(string text, int nums) {
 
@@ -80,4 +84,50 @@ string convert(string text, int nums) {
         }
     }
     return result;
+}
+
+string officeConvert1(string s, int numRows) {
+
+    if (numRows == 1) return s;
+
+    vector<string> rows((unsigned long) min(numRows, int(s.size())));
+    int curRow = 0;
+    bool goingDown = false;
+
+    for (char c : s) {
+        rows[curRow] += c;
+        if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;
+        curRow += goingDown ? 1 : -1;
+    }
+
+    string ret;
+    for (string row : rows) ret += row;
+    return ret;
+}
+
+
+/**
+ 算法
+    首先访问 行0中的所有字符接着访问行1然后行2依此类推...
+    对于所有整数 kk，
+    行0中的字符位于索引k(2⋅numRows−2) 处;
+    行numRows−1中的字符位于索引k(2⋅numRows−2)+numRows−1 处;
+    内部的行i中的字符位于索引k(2{numRows}-2)+i以及(2⋅numRows−2)−i 处;
+ */
+string officeConvert2(string s, int numRows) {
+
+    if (numRows == 1) return s;
+
+    string ret;
+    int n = static_cast<int>(s.size());
+    int cycleLen = 2 * numRows - 2;
+
+    for (int i = 0; i < numRows; i++) {
+        for (int j = 0; j + i < n; j += cycleLen) {
+            ret += s[j + i];
+            if (i != 0 && i != numRows - 1 && j + cycleLen - i < n)
+                ret += s[j + cycleLen - i];
+        }
+    }
+    return ret;
 }
