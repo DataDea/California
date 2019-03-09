@@ -33,10 +33,41 @@
 
 #include <iostream>
 #include <string.h>
+#include <cstring>
+#include <sstream>
 
 using namespace std;
 
 
-void convert(string text) {
+string convert(string text, int nums) {
 
+    if (text.empty() || text == " " || text.size() == 0) {
+        return text;
+    }
+    int len = static_cast<int>(text.size());
+    char a[len][4];
+    int index = 0;
+    for (int i = 0; i < len; i++) {
+        for (int j = 0; j < nums; j++) {
+            if (i / (nums - 1) == 0) {
+                a[i][j] = text[index++];
+                continue;
+            }
+            if (i + j == nums - 1) {
+                a[i][j] = text[index++];
+                continue;
+            }
+            if (i + 2 + j - nums == nums) {
+                a[i][j] = text[index++];
+                continue;
+            }
+        }
+    }
+    string result;
+    for (int k = 0; k < len; k++) {
+        for (int m = 0; m < nums; m++) {
+            result = result + a[k][m];
+        }
+    }
+    return result;
 }
