@@ -45,33 +45,35 @@ string convert(string text, int nums) {
         return text;
     }
     int len = static_cast<int>(text.size());
-    char a[len][4];
+    char a[len][nums];
     for (int k = 0; k < len; k++) {
         for (int m = 0; m < nums; m++) {
             a[k][m] = ' ';
         }
     }
+    //PAYPALISHIRING
     int index = 0;
+    int tap = 0;
     for (int i = 0; i < len; i++) {
-        for (int j = 0; j < nums; j++) {
+        for (int j = nums - 1; j > -1; j--) {
+            if (i / (nums - 1) == 0) {
+                tap++;
+            }
             if (i / (nums - 1) == 0) {
                 a[i][j] = text[index++];
                 continue;
             }
-            if (i + j == nums - 1) {
+            if (i - tap * (nums - 1) == j) {
                 a[i][j] = text[index++];
                 continue;
             }
-            if (i + 2 + j - nums == nums) {
-                a[i][j] = text[index++];
-                continue;
-            }
+
         }
     }
     string result;
-    for (int k = 0; k < len; k++) {
-        for (int m = 0; m < nums; m++) {
-            char temp = a[k][m];
+    for (int j = nums - 1; j > -1; j--) {
+        for (int i = 0; i < len; i++) {
+            char temp = a[i][j];
             if (temp != ' ') {
                 result = result + temp;
             }
