@@ -46,6 +46,11 @@ string convert(string text, int nums) {
     }
     int len = static_cast<int>(text.size());
     char a[len][4];
+    for (int k = 0; k < len; k++) {
+        for (int m = 0; m < nums; m++) {
+            a[k][m] = ' ';
+        }
+    }
     int index = 0;
     for (int i = 0; i < len; i++) {
         for (int j = 0; j < nums; j++) {
@@ -66,7 +71,10 @@ string convert(string text, int nums) {
     string result;
     for (int k = 0; k < len; k++) {
         for (int m = 0; m < nums; m++) {
-            result = result + a[k][m];
+            char temp = a[k][m];
+            if (temp != ' ') {
+                result = result + temp;
+            }
         }
     }
     return result;
