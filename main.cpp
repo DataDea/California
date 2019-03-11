@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <math.h>
 using namespace std;
 
 extern void test();
@@ -11,9 +11,12 @@ extern string findBackString(string text);
 extern string officeLongestPalindrome(string text);
 
 extern string officeConvert1(string s, int numRows);
+
 extern string officeConvert2(string s, int numRows);
 
 extern string convert(string text, int nums);
+
+extern int reverse(int x);
 
 int main() {
     // 基于当前系统的当前日期/时间
@@ -21,7 +24,7 @@ int main() {
     // 把 now 转换为字符串形式
     char *s1 = ctime(&start);
     cout << s1 << endl;
-    string result = officeConvert2("PAYPALISHIRING", 3);
+    int result = reverse(-123);
     cout << result << endl;
     // 基于当前系统的当前日期/时间
     time_t end = time(0);
