@@ -21,6 +21,8 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <string.h>
 
 using namespace std;
 
@@ -35,24 +37,25 @@ int sign(int x) {
     return a | b;
 }
 
-int reverse(int x) {
+int64_t reverse(int x) {
     int flag = sign(x);
-    int temp = flag * x, result = 0;
+    int temp = x ;
+    int64_t result = 0;
     string s;
     while (temp != 0) {
-        int element = temp % 10;
+        int element = temp % 10 * flag;
         temp = temp / 10;
         s += to_string(element);
     }
-    for (int i = 0, j = s.size() - 1; i < s.size() && j > -1; i++, j--) {
-        int e = s[i];
-        int t = 1;
-        for (int p = j; p > 0; p--) {
-            t *= 10;
-        }
-        if (e != 0) {
-            result += e * t;
-        }
+    char *tmp = (char *)s.data();
+    if (atol(tmp) > 2147483647) {
+        return 0;
     }
+    result = atol(tmp) * flag;
     return result;
+//    c++11的写法
+//    stringstream ss;
+//    ss << s;
+//    ss >> result;
+//    return result * flag;
 }

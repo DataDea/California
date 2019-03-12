@@ -16,7 +16,7 @@ extern string officeConvert2(string s, int numRows);
 
 extern string convert(string text, int nums);
 
-extern int reverse(int x);
+extern int64_t reverse(int x);
 
 int main() {
     // 基于当前系统的当前日期/时间
@@ -24,7 +24,8 @@ int main() {
     // 把 now 转换为字符串形式
     char *s1 = ctime(&start);
     cout << s1 << endl;
-    int result = reverse(-123);
+    int64_t result = reverse(1534236469);
+                           //2147483647
     cout << result << endl;
     // 基于当前系统的当前日期/时间
     time_t end = time(0);
