@@ -18,13 +18,15 @@ extern string convert(string text, int nums);
 
 extern int64_t reverse(int x);
 
+extern int officalReverse(int x);
+
 int main() {
     // 基于当前系统的当前日期/时间
     time_t start = time(0);
     // 把 now 转换为字符串形式
     char *s1 = ctime(&start);
     cout << s1 << endl;
-    int64_t result = reverse(1534236469);
+    int64_t result = officalReverse(1534236469);
                            //2147483647
     cout << result << endl;
     // 基于当前系统的当前日期/时间
