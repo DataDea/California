@@ -74,16 +74,15 @@ ListNode *call() {
     int lens;
     cout << "请输入链表的长度" << endl;
     cin >> lens;
-    ListNode *head = new ListNode;
-    head->val = 0;
-    head->next = NULL;
-    ListNode *cur = head;
-    int i = 1;
-    while (i <= lens) {
+    int i = 0;
+    ListNode *cur = NULL;
+    ListNode *head;
+    while (i < lens) {
         cout << "输入节点的值" << endl;
         int val;
         cin >> val;
         if (i == 0) {
+            head = new ListNode;
             head->val = val;
             cur = head;
         } else {
@@ -97,12 +96,13 @@ ListNode *call() {
     cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
     s->iterate(head);
     cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
-    int n;
-    cout << "输入删除倒数节点编号" << endl;
-    cin >> n;
-    s->removeNthFromEnd(head, n);
-    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
-    s->iterate(head);
-    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+    cout << head->val << endl;
+//    int n;
+//    cout << "输入删除倒数节点编号" << endl;
+//    cin >> n;
+//    s->removeNthFromEnd(head, n);
+//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+//    s->iterate(head);
+//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 
 }
