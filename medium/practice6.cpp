@@ -25,12 +25,13 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
+
     ListNode(int x) : val(x), next(NULL) {}
 };
 
 class Solution {
 public:
-    ListNode *removeNthFromEnd(ListNode *head, int n) {
+    ListNode *removeNthFromEnd1(ListNode *head, int n) {
 
         if (n < 0) {
             return head;
@@ -67,6 +68,30 @@ public:
     }
 
 public:
+    ListNode *removeNthFromEnd(ListNode *head, int n) {
+        ListNode *dumpy = (ListNode *) malloc(sizeof(ListNode));
+        dumpy->next = head;
+        int lens = 0;
+        ListNode *temp = head;
+        while (temp != NULL) {
+            lens++;
+            temp = temp->next;
+        }
+        int index = lens - n + 1;
+        ListNode *cur = head, *before = head;
+        int count = 0;
+        while (cur != NULL) {
+            if (++count == index) {
+                before->next = cur->next;
+                break;
+            }
+            before = cur;
+            cur = cur->next;
+        }
+        return dumpy->next;
+    }
+
+public:
     Solution() {};
 };
 
@@ -96,15 +121,16 @@ ListNode *call() {
         }
         i++;
     }
-//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
-//    s->iterate(head);
-//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+    cout << "%%%%%%%%%%%%%%%%%%移除倒数第N个元素前的值%%%%%%%%%%%%%%%%%%%%%%" << endl;
+    s->iterate(head);
+    cout << "%%%%%%%%%%%%%%%%%%移除倒数第N个元素前的值%%%%%%%%%%%%%%%%%%%%%%" << endl;
     int n;
     cout << "输入删除倒数节点编号" << endl;
     cin >> n;
     s->removeNthFromEnd(head, n);
-    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+    cout << "%%%%%%%%%%%%%%%%%%移除倒数第N个元素后的值%%%%%%%%%%%%%%%%%%%%%%" << endl;
     s->iterate(head);
-    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+    cout << "%%%%%%%%%%%%%%%%%%移除倒数第N个元素后的值%%%%%%%%%%%%%%%%%%%%%%" << endl;
 
 }
+
