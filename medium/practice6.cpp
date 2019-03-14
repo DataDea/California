@@ -25,6 +25,7 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
 };
 
 class Solution {
@@ -74,7 +75,7 @@ ListNode *call() {
 
     Solution *s = new(Solution);
     int lens;
-    cout << "请输入链表的长度" << endl;
+    cout << "请输入节点的个数" << endl;
     cin >> lens;
     int i = 0;
     ListNode *cur = NULL;
@@ -84,27 +85,26 @@ ListNode *call() {
         int val;
         cin >> val;
         if (i == 0) {
-            head = new ListNode;
+            head = static_cast<ListNode *>(malloc(sizeof(ListNode)));
             head->val = val;
             cur = head;
         } else {
-            auto *temp = new ListNode;
+            auto *temp = static_cast<ListNode *>(malloc(sizeof(ListNode)));
             temp->val = val;
             cur->next = temp;
             cur = temp;
         }
         i++;
     }
-//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
-//    s->iterate(head);
-//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
-//    cout << head->val << endl;
-    int n;
-    cout << "输入删除倒数节点编号" << endl;
-    cin >> n;
-    s->removeNthFromEnd(head, n);
     cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
     s->iterate(head);
     cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+//    int n;
+//    cout << "输入删除倒数节点编号" << endl;
+//    cin >> n;
+//    s->removeNthFromEnd(head, n);
+//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+//    s->iterate(head);
+//    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 
 }
