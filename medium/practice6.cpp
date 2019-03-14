@@ -35,14 +35,14 @@ public:
         if (n < 0) {
             return head;
         }
-        if (!head) {
-            return head;
+        if (head == NULL) {
+            return NULL;
         }
         ListNode *cur = head, *font = head, *before = head;
-        while (cur) {
+        while (cur != NULL) {
             int count = 0;
             ListNode *tmp = cur->next;
-            while (tmp->next) {
+            while (tmp->next != NULL) {
                 count++;
                 tmp = tmp->next;
             }
@@ -60,7 +60,7 @@ public:
 public:
     void iterate(ListNode *head) {
         ListNode *tmp = head;
-        while (tmp) {
+        while (tmp != NULL) {
             cout << tmp->val << endl;
             tmp = tmp->next;
         }
@@ -96,15 +96,15 @@ ListNode *call() {
         }
         i++;
     }
-    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
-    s->iterate(head);
-    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
-//    int n;
-//    cout << "输入删除倒数节点编号" << endl;
-//    cin >> n;
-//    s->removeNthFromEnd(head, n);
 //    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 //    s->iterate(head);
 //    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+    int n;
+    cout << "输入删除倒数节点编号" << endl;
+    cin >> n;
+    s->removeNthFromEnd(head, n);
+    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+    s->iterate(head);
+    cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 
 }
