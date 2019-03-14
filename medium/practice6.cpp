@@ -38,14 +38,14 @@ public:
             return head;
         }
         ListNode *cur = head, *font = head, *before = head;
-        while (cur->next) {
+        while (cur) {
             int count = 0;
-            ListNode *tmp = cur;
+            ListNode *tmp = cur->next;
             while (tmp->next) {
                 count++;
                 tmp = tmp->next;
             }
-            if (++count == n) {
+            if (count == n) {
                 before->next = tmp->next;
                 return head;
             }
