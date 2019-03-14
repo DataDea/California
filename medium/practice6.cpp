@@ -67,9 +67,11 @@ public:
         }
     }
 
+    // 1->2->3->4->5
 public:
     ListNode *removeNthFromEnd(ListNode *head, int n) {
         ListNode *dumpy = (ListNode *) malloc(sizeof(ListNode));
+        dumpy->val = 0;
         dumpy->next = head;
         int lens = 0;
         ListNode *temp = head;
@@ -112,10 +114,12 @@ ListNode *call() {
         if (i == 0) {
             head = static_cast<ListNode *>(malloc(sizeof(ListNode)));
             head->val = val;
+            head->next = NULL;
             cur = head;
         } else {
             auto *temp = static_cast<ListNode *>(malloc(sizeof(ListNode)));
             temp->val = val;
+            temp->next = NULL;
             cur->next = temp;
             cur = temp;
         }

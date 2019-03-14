@@ -23,6 +23,7 @@
 #include <string>
 #include <sstream>
 #include <string.h>
+#include <climits>
 
 using namespace std;
 
