@@ -56,7 +56,7 @@ public:
 
 public:
     void iterate(ListNode *head) {
-        ListNode *tmp = head->next;
+        ListNode *tmp = head;
         while (tmp) {
             cout << tmp->val << endl;
             tmp = tmp->next;
