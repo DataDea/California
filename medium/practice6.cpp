@@ -60,6 +60,10 @@ public:
 
 public:
     void iterate(ListNode *head) {
+        if (head == NULL) {
+            cout << "KONG LIST";
+            return;
+        }
         ListNode *tmp = head;
         while (tmp != NULL) {
             cout << tmp->val << endl;
@@ -67,9 +71,11 @@ public:
         }
     }
 
+    // 1->2->3->4->5
 public:
     ListNode *removeNthFromEnd(ListNode *head, int n) {
         ListNode *dumpy = (ListNode *) malloc(sizeof(ListNode));
+        dumpy->val = 0;
         dumpy->next = head;
         int lens = 0;
         ListNode *temp = head;
@@ -77,17 +83,24 @@ public:
             lens++;
             temp = temp->next;
         }
-        int index = lens - n + 1;
-        ListNode *cur = head, *before = head;
-        int count = 0;
-        while (cur != NULL) {
-            if (++count == index) {
-                before->next = cur->next;
-                break;
-            }
-            before = cur;
+//        int index = lens - n + 1;
+//        ListNode *cur = head, *before = head;
+//        int count = 0;
+//        while (cur != NULL) {
+//            if (++count == index) {
+//                before->next = cur->next;
+//                break;
+//            }
+//            before = cur;
+//            cur = cur->next;
+//        }
+        ListNode *cur = dumpy;
+        int count = lens - n;
+        while (count > 0) {
+            count--;
             cur = cur->next;
         }
+        cur->next = cur->next->next;
         return dumpy->next;
     }
 
@@ -112,10 +125,12 @@ ListNode *call() {
         if (i == 0) {
             head = static_cast<ListNode *>(malloc(sizeof(ListNode)));
             head->val = val;
+            head->next = NULL;
             cur = head;
         } else {
             auto *temp = static_cast<ListNode *>(malloc(sizeof(ListNode)));
             temp->val = val;
+            temp->next = NULL;
             cur->next = temp;
             cur = temp;
         }
